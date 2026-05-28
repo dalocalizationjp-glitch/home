@@ -143,62 +143,92 @@
 </head>
 <body>
 
-  <header>
-    <div class="container header-inner">
-      <a href="#" class="logo font-display">Daisuke A<span>.</span></a>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#works">Works</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+<header>
+  <div class="container header-inner">
+    <a href="#" class="logo font-display">Daisuke A<span>.</span></a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#works">Works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-  <main>
-    <section class="hero">
-      <canvas id="particles-canvas"></canvas>
-      <div class="hero-bg-glow"></div>
-      <div class="container relative z-10">
+<main>
+  <section class="hero">
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-bg-glow"></div>
+
+    <div class="container relative z-10">
+      <div class="hero-grid">
+
+        <!-- Left Content -->
         <div class="hero-content fade-up visible">
           <div class="hero-role font-mono">Freelance Web Developer</div>
+
           <h1 class="hero-title font-display">
             ユーザー体験を最大化する<br>
             モダンWebフロントエンドの実装
           </h1>
+
           <p class="hero-desc">
             パフォーマンスとユーザビリティにフォーカスしたWebアプリケーション開発を行っています。<br>
             デジタルコンテンツ運用やローカライゼーションの経験を活かし、単なる機能実装にとどまらない、ビジネスの目的に沿ったユーザー中心のプロダクト設計を得意としています。
           </p>
+
           <div class="btn-group">
             <a href="#contact" class="btn btn-primary">
               お問い合わせ
-              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
             </a>
+
             <a href="#works" class="btn btn-outline">
               プロジェクトを見る
             </a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about">
-      <div class="container">
-        <div class="about-layout">
-          <div class="about-left fade-up delay-100">
-            <h2 class="section-title font-display">About</h2>
-            <div class="title-line"></div>
-          </div>
-          <div class="about-right fade-up delay-200">
-            <h3 class="about-name">Daisuke A.</h3>
-            <p class="about-text">フリーランスのWebデベロッパーとして、フロントエンド領域を中心にモダンなWeb開発の現場に携わっています。</p>
-            <p class="about-text">これまでのコンテンツ運用やプロジェクトマネジメントのバックグラウンドを強みに、UI設計の意図を汲み取った的確なコンポーネント実装を得意とします。表示速度の改善、アクセシビリティへの配慮、SEOを見据えた内部構造の整理など、見えない部分の品質にもこだわり、長期的に運用しやすいコードベースを提供します。</p>
+        <!-- Right Visual -->
+        <div class="hero-visual fade-up delay-200">
+          <div class="hero-image-wrapper">
+            <img
+              src="digitalworkflow.webp"
+              alt="AI-assisted digital workflow and content operations"
+              class="hero-image"
+            >
           </div>
         </div>
+
       </div>
-    </section>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="about-layout">
+        <div class="about-left fade-up delay-100">
+          <h2 class="section-title font-display">About</h2>
+          <div class="title-line"></div>
+        </div>
+
+        <div class="about-right fade-up delay-200">
+          <h3 class="about-name">Daisuke A.</h3>
+
+          <p class="about-text">
+            フリーランスのWebデベロッパーとして、フロントエンド領域を中心にモダンなWeb開発の現場に携わっています。
+          </p>
+
+          <p class="about-text">
+            これまでのコンテンツ運用やプロジェクトマネジメントのバックグラウンドを強みに、UI設計の意図を汲み取った的確なコンポーネント実装を得意とします。表示速度の改善、アクセシビリティへの配慮、SEOを見据えた内部構造の整理など、見えない部分の品質にもこだわり、長期的に運用しやすいコードベースを提供します。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
     <!-- Skills Section -->
     <section id="skills" class="skills-section">
