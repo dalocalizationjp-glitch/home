@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daisuke A | Digital Content Operations</title>
+  <meta
+    name="description"
+    content="Professional profile for digital content operations, Japanese localization support, web publishing, and SEO-oriented content management."
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #111111;
+      line-height: 1.7;
+    }
+
+    a {
+      color: #111111;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      border-bottom: 1px solid #e5e5e5;
+      padding: 28px 0;
+      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: 14px;
+      color: #444444;
+      transition: opacity 0.2s ease;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
+    }
+
+    .hero {
+      padding: 110px 0 90px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #666666;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 1.05;
+      margin-bottom: 28px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-description {
+      max-width: 760px;
+      font-size: 18px;
+      color: #444444;
+    }
+
+    .hero-links {
+      margin-top: 36px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border: 1px solid #111111;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .button:hover {
+      background: #111111;
+      color: #ffffff;
+    }
+
+    section {
+      padding: 90px 0;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .section-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #777777;
+      margin-bottom: 28px;
+    }
+
+    .about-text {
+      max-width: 760px;
+      font-size: 18px;
+      color: #333333;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .skill-card {
+      border: 1px solid #e8e8e8;
+      padding: 22px;
+      background: #fafafa;
+    }
+
+    .skill-card h3 {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .skill-card p {
+      font-size: 14px;
+      color: #555555;
+    }
+
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-top: 30px;
+    }
+
+    .experience-item {
+      border-left: 2px solid #111111;
+      padding-left: 20px;
+    }
+
+    .experience-item h3 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .experience-meta {
+      font-size: 14px;
+      color: #666666;
+      margin-bottom: 12px;
+    }
+
+    .experience-item p {
+      color: #444444;
+      max-width: 760px;
+    }
+
+    .contact-box {
+      border: 1px solid #e5e5e5;
+      padding: 36px;
+      background: #fafafa;
+    }
+
+    .contact-box p {
+      margin-bottom: 14px;
+      color: #444444;
+    }
+
+    footer {
+      padding: 40px 0 60px;
+      border-top: 1px solid #f0f0f0;
+      color: #777777;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 90px 0 70px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .hero-description,
+      .about-text {
+        font-size: 16px;
+      }
+
+      .contact-box {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <div class="logo">DA LOCALIZATION JP</div>
+
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Digital Content Operations</div>
+
+        <h1>
+          Japanese Localization<br />
+          & Web Content Operations
+        </h1>
+
+        <p class="hero-description">
+          Professional profile and portfolio for digital content operations,
+          Japanese localization support, web publishing, and SEO-oriented
+          content management.
+        </p>
+
+        <div class="hero-links">
+          <a href="#contact" class="button">Contact</a>
+          <a href="#experience" class="button">View Experience</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-title">About</div>
+
+        <p class="about-text">
+          Experienced in digital content operations, Japanese localization
+          support, website management, and online publishing workflows.
+          Background includes web-based project management, SEO-oriented content
+          structuring, and AI-assisted content operations across multiple
+          digital platforms.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">Core Skills</div>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Japanese Localization</h3>
+            <p>
+              Natural Japanese adaptation, content refinement, and platform
+              localization support.
+            </p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Web Content Operations</h3>
+            <p>
+              Website management, publishing workflows, and content maintenance.
+            </p>
+          </div>
+
+          <div class="skill-card">
+            <h3>SEO Content Structuring</h3>
+            <p>
+              Search-oriented content organization and user-focused information
+              architecture.
+            </p>
+          </div>
+
+          <div class="skill-card">
+            <h3>AI-assisted Workflows</h3>
+            <p>
+              Experience using AI-assisted tools for editing, refinement, and
+              digital content support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-title">Experience</div>
+
+        <div class="experience-list">
+          <div class="experience-item">
+            <h3>Digital Content & Localization Operations</h3>
+
+            <div class="experience-meta">
+              Self-Employed | Tokyo, Japan | Present
+            </div>
+
+            <p>
+              Managing independent digital publishing and web content projects,
+              including website development, platform operations, SEO-oriented
+              content management, and online publishing workflows.
+            </p>
+          </div>
+
+          <div class="experience-item">
+            <h3>Web Platform Management</h3>
+
+            <div class="experience-meta">
+              WordPress / GitHub Pages / Digital Publishing
+            </div>
+
+            <p>
+              Building and maintaining web-based platforms using WordPress and
+              GitHub Pages, including content organization, publishing support,
+              and front-end customization.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">Contact</div>
+
+        <div class="contact-box">
+          <p>
+            Available for freelance and remote opportunities related to
+            Japanese localization, content review, digital publishing, and web
+            content operations.
+          </p>
+
+          <p>Email: your-email@example.com</p>
+
+          <p>LinkedIn: linkedin.com/in/your-profile</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Daisuke A. All rights reserved
