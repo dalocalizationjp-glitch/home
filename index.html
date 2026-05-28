@@ -1,243 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Daisuke A | Digital Content Operations</title>
-  <meta
-    name="description"
-    content="Professional profile for digital content operations, Japanese localization support, web publishing, and SEO-oriented content management."
-  />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daisuke A. Portfolio</title>
+  
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      --bg-color: #09090b;
+      --text-main: #fafafa;
+      --text-muted: #a1a1aa;
+      --text-darker: #71717a;
+      --accent: #3b82f6;
+      --border-color: #27272a;
+      --card-bg: #18181b;
+      --card-bg-hover: #27272a;
     }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #ffffff;
-      color: #111111;
-      line-height: 1.7;
+      font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    a {
-      color: #111111;
-      text-decoration: none;
-    }
+    .font-display { font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif; }
+    .font-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
 
-    .container {
-      width: 100%;
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
 
+    /* Header */
     header {
-      border-bottom: 1px solid #e5e5e5;
-      padding: 28px 0;
-      background: #ffffff;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; height: 80px;
+      background-color: rgba(9, 9, 11, 0.8); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color); z-index: 50;
+      display: flex; align-items: center;
     }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    .logo { font-size: 1.25rem; font-weight: bold; letter-spacing: -0.02em; }
+    .logo span { color: var(--accent); }
+    nav { display: none; gap: 2rem; }
+    @media (min-width: 768px) { nav { display: flex; } }
+    nav a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
+    nav a:hover { color: var(--text-main); }
 
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
+    /* Hero */
+    .hero { min-height: 90vh; display: flex; align-items: center; padding: 6rem 0; position: relative; }
+    .hero-bg-glow {
+      position: absolute; top: -10rem; right: -5rem; width: 600px; height: 600px;
+      background: rgba(59, 130, 246, 0.1); filter: blur(120px); border-radius: 50%;
+      pointer-events: none; mix-blend-mode: screen; z-index: 1;
     }
+    .hero-content { position: relative; z-index: 10; max-width: 56rem; }
+    .hero-role { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .hero-title { font-size: 2.5rem; font-weight: bold; line-height: 1.2; margin-bottom: 2rem; letter-spacing: -0.02em; }
+    @media (min-width: 768px) { .hero-title { font-size: 4rem; } }
+    .hero-desc { font-size: 1.125rem; color: var(--text-muted); max-width: 42rem; margin-bottom: 3rem; }
+    .btn-group { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 9999px; font-weight: 500; transition: all 0.2s; }
+    .btn-primary { background-color: var(--text-main); color: var(--bg-color); }
+    .btn-primary:hover { background-color: #d4d4d8; }
+    .btn-outline { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
+    .btn-outline:hover { background-color: var(--card-bg); }
 
-    .logo {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-    }
+    /* Particles */
+    #particles-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.8; }
 
-    nav {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+    /* Sections Shared */
+    section[id] { padding: 6rem 0; border-top: 1px solid var(--border-color); position: relative; }
+    .section-header { margin-bottom: 4rem; }
+    .section-title { font-size: 1.875rem; font-weight: bold; margin-bottom: 1rem; }
+    .title-line { height: 4px; width: 48px; background-color: rgba(255, 255, 255, 0.2); }
 
-    nav a {
-      font-size: 14px;
-      color: #444444;
-      transition: opacity 0.2s ease;
-    }
+    /* About */
+    .about-layout { display: flex; flex-direction: column; gap: 3rem; }
+    @media (min-width: 768px) { .about-layout { flex-direction: row; gap: 6rem; } .about-left { width: 33.333%; } .about-right { width: 66.666%; } }
+    .about-name { font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; }
+    .about-text { color: var(--text-muted); font-size: 1.125rem; margin-bottom: 1.5rem; }
 
-    nav a:hover {
-      opacity: 0.6;
-    }
+    /* Skills */
+    .skills-section { background-color: rgba(24, 24, 27, 0.5); }
+    .skills-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 768px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .skills-grid { grid-template-columns: repeat(4, 1fr); } }
+    .skill-card { background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 2rem; border-radius: 1rem; transition: border-color 0.2s; }
+    .skill-card:hover { border-color: #3f3f46; }
+    .skill-icon-wrap { width: 40px; height: 40px; border-radius: 50%; background-color: var(--border-color); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+    .skill-card h3 { font-size: 1.125rem; font-weight: 500; margin-bottom: 1rem; }
+    .skill-list { list-style: none; }
+    .skill-list li { color: var(--text-muted); font-size: 0.875rem; margin-bottom: 0.75rem; display: flex; align-items: center; }
+    .skill-list li::before { content: ''; display: block; width: 6px; height: 6px; background-color: #3f3f46; border-radius: 50%; margin-right: 0.75rem; }
 
-    .hero {
-      padding: 110px 0 90px;
-    }
+    /* Works */
+    .works-list { display: flex; flex-direction: column; gap: 3rem; }
+    .work-card { background-color: rgba(24, 24, 27, 0.5); border: 1px solid var(--border-color); padding: 2rem; border-radius: 1.5rem; display: flex; flex-direction: column; gap: 2rem; transition: background-color 0.2s; }
+    @media (min-width: 768px) { .work-card { flex-direction: row; padding: 3rem; justify-content: space-between; } .work-info { width: 66.666%; } }
+    .work-card:hover { background-color: var(--card-bg); }
+    .work-role { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-darker); margin-bottom: 0.75rem; }
+    .work-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; }
+    .work-desc { color: var(--text-muted); margin-bottom: 2rem; }
+    .work-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tech-tag { background-color: var(--border-color); color: var(--text-muted); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; }
+    .work-link { width: 48px; height: 48px; border-radius: 50%; background-color: var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-muted); transition: all 0.2s; flex-shrink: 0; }
+    .work-link:hover { color: var(--text-main); background-color: #3f3f46; }
 
-    .eyebrow {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #666666;
-      margin-bottom: 20px;
-    }
+    /* Contact */
+    .contact-section { padding: 8rem 0; text-align: center; background-color: #09090b; overflow: hidden; }
+    .contact-bg-glow { position: absolute; bottom: -10rem; left: -5rem; width: 400px; height: 400px; background: rgba(59, 130, 246, 0.05); filter: blur(100px); border-radius: 50%; pointer-events: none; }
+    .contact-icon-wrap { display: inline-flex; padding: 1rem; background-color: var(--card-bg); border-radius: 1rem; margin-bottom: 2rem; color: var(--text-muted); }
+    .contact-title { font-size: 2.25rem; font-weight: bold; margin-bottom: 1.5rem; }
+    @media (min-width: 768px) { .contact-title { font-size: 3rem; } }
+    .contact-desc { color: var(--text-muted); font-size: 1.125rem; max-width: 42rem; margin: 0 auto 3rem auto; }
+    .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 4rem; }
+    .social-link { color: var(--text-darker); padding: 0.5rem; transition: color 0.2s; }
+    .social-link:hover { color: var(--text-main); }
 
-    h1 {
-      font-size: clamp(42px, 7vw, 72px);
-      line-height: 1.05;
-      margin-bottom: 28px;
-      letter-spacing: -0.04em;
-    }
+    /* Footer */
+    footer { padding: 2rem 0; border-top: 1px solid var(--border-color); font-size: 0.875rem; color: var(--text-darker); text-align: center; }
+    @media (min-width: 768px) { .footer-inner { display: flex; justify-content: space-between; } }
+    .footer-inner p { margin-bottom: 0.5rem; }
+    @media (min-width: 768px) { .footer-inner p { margin-bottom: 0; } }
 
-    .hero-description {
-      max-width: 760px;
-      font-size: 18px;
-      color: #444444;
-    }
+    /* Scroll animations */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
 
-    .hero-links {
-      margin-top: 36px;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 22px;
-      border: 1px solid #111111;
-      font-size: 14px;
-      transition: all 0.2s ease;
-    }
-
-    .button:hover {
-      background: #111111;
-      color: #ffffff;
-    }
-
-    section {
-      padding: 90px 0;
-      border-top: 1px solid #f0f0f0;
-    }
-
-    .section-title {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #777777;
-      margin-bottom: 28px;
-    }
-
-    .about-text {
-      max-width: 760px;
-      font-size: 18px;
-      color: #333333;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      margin-top: 28px;
-    }
-
-    .skill-card {
-      border: 1px solid #e8e8e8;
-      padding: 22px;
-      background: #fafafa;
-    }
-
-    .skill-card h3 {
-      font-size: 15px;
-      margin-bottom: 10px;
-    }
-
-    .skill-card p {
-      font-size: 14px;
-      color: #555555;
-    }
-
-    .experience-list {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      margin-top: 30px;
-    }
-
-    .experience-item {
-      border-left: 2px solid #111111;
-      padding-left: 20px;
-    }
-
-    .experience-item h3 {
-      font-size: 20px;
-      margin-bottom: 6px;
-    }
-
-    .experience-meta {
-      font-size: 14px;
-      color: #666666;
-      margin-bottom: 12px;
-    }
-
-    .experience-item p {
-      color: #444444;
-      max-width: 760px;
-    }
-
-    .contact-box {
-      border: 1px solid #e5e5e5;
-      padding: 36px;
-      background: #fafafa;
-    }
-
-    .contact-box p {
-      margin-bottom: 14px;
-      color: #444444;
-    }
-
-    footer {
-      padding: 40px 0 60px;
-      border-top: 1px solid #f0f0f0;
-      color: #777777;
-      font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        padding: 90px 0 70px;
-      }
-
-      section {
-        padding: 70px 0;
-      }
-
-      .hero-description,
-      .about-text {
-        font-size: 16px;
-      }
-
-      .contact-box {
-        padding: 28px;
-      }
-    }
+    /* SVGs */
+    svg { width: 1.25rem; height: 1.25rem; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .svg-lg { width: 1.5rem; height: 1.5rem; }
+    .svg-xl { width: 2rem; height: 2rem; display: block; }
   </style>
 </head>
 <body>
+
   <header>
     <div class="container header-inner">
-      <div class="logo">DA LOCALIZATION JP</div>
-
+      <a href="#" class="logo font-display">Daisuke A<span>.</span></a>
       <nav>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
+        <a href="#works">Works</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -245,135 +157,336 @@
 
   <main>
     <section class="hero">
-      <div class="container">
-        <div class="eyebrow">Digital Content Operations</div>
-
-        <h1>
-          Japanese Localization<br />
-          & Web Content Operations
-        </h1>
-
-        <p class="hero-description">
-          Professional profile and portfolio for digital content operations,
-          Japanese localization support, web publishing, and SEO-oriented
-          content management.
-        </p>
-
-        <div class="hero-links">
-          <a href="#contact" class="button">Contact</a>
-          <a href="#experience" class="button">View Experience</a>
+      <canvas id="particles-canvas"></canvas>
+      <div class="hero-bg-glow"></div>
+      <div class="container relative z-10">
+        <div class="hero-content fade-up visible">
+          <div class="hero-role font-mono">Freelance Web Developer</div>
+          <h1 class="hero-title font-display">
+            ユーザー体験を最大化する<br>
+            モダンWebフロントエンドの実装
+          </h1>
+          <p class="hero-desc">
+            パフォーマンスとユーザビリティにフォーカスしたWebアプリケーション開発を行っています。<br>
+            デジタルコンテンツ運用やローカライゼーションの経験を活かし、単なる機能実装にとどまらない、ビジネスの目的に沿ったユーザー中心のプロダクト設計を得意としています。
+          </p>
+          <div class="btn-group">
+            <a href="#contact" class="btn btn-primary">
+              お問い合わせ
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#works" class="btn btn-outline">
+              プロジェクトを見る
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- About Section -->
     <section id="about">
       <div class="container">
-        <div class="section-title">About</div>
-
-        <p class="about-text">
-          Experienced in digital content operations, Japanese localization
-          support, website management, and online publishing workflows.
-          Background includes web-based project management, SEO-oriented content
-          structuring, and AI-assisted content operations across multiple
-          digital platforms.
-        </p>
+        <div class="about-layout">
+          <div class="about-left fade-up delay-100">
+            <h2 class="section-title font-display">About</h2>
+            <div class="title-line"></div>
+          </div>
+          <div class="about-right fade-up delay-200">
+            <h3 class="about-name">Daisuke A.</h3>
+            <p class="about-text">フリーランスのWebデベロッパーとして、フロントエンド領域を中心にモダンなWeb開発の現場に携わっています。</p>
+            <p class="about-text">これまでのコンテンツ運用やプロジェクトマネジメントのバックグラウンドを強みに、UI設計の意図を汲み取った的確なコンポーネント実装を得意とします。表示速度の改善、アクセシビリティへの配慮、SEOを見据えた内部構造の整理など、見えない部分の品質にもこだわり、長期的に運用しやすいコードベースを提供します。</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="skills">
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
       <div class="container">
-        <div class="section-title">Core Skills</div>
-
+        <div class="section-header fade-up">
+          <h2 class="section-title font-display">Skills & Stack</h2>
+          <div class="title-line"></div>
+        </div>
         <div class="skills-grid">
-          <div class="skill-card">
-            <h3>Japanese Localization</h3>
-            <p>
-              Natural Japanese adaptation, content refinement, and platform
-              localization support.
-            </p>
+          <div class="skill-card fade-up delay-100">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <svg viewBox="0 0 24 24"><path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/></svg>
+              </div>
+              <h3>Frontend</h3>
+            </div>
+            <ul class="skill-list font-mono">
+              <li>React</li>
+              <li>TypeScript</li>
+              <li>Next.js</li>
+              <li>Vue.js</li>
+              <li>HTML/CSS</li>
+            </ul>
           </div>
-
-          <div class="skill-card">
-            <h3>Web Content Operations</h3>
-            <p>
-              Website management, publishing workflows, and content maintenance.
-            </p>
+          <div class="skill-card fade-up delay-200">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+              </div>
+              <h3>Styling & UI</h3>
+            </div>
+            <ul class="skill-list font-mono">
+              <li>Tailwind CSS</li>
+              <li>CSS-in-JS</li>
+              <li>Framer Motion</li>
+              <li>shadcn/ui</li>
+            </ul>
           </div>
-
-          <div class="skill-card">
-            <h3>SEO Content Structuring</h3>
-            <p>
-              Search-oriented content organization and user-focused information
-              architecture.
-            </p>
+          <div class="skill-card fade-up delay-300">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <svg viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+              </div>
+              <h3>Backend & Tools</h3>
+            </div>
+            <ul class="skill-list font-mono">
+              <li>Node.js</li>
+              <li>Vite</li>
+              <li>Git</li>
+              <li>REST API</li>
+              <li>GraphQL</li>
+            </ul>
           </div>
-
-          <div class="skill-card">
-            <h3>AI-assisted Workflows</h3>
-            <p>
-              Experience using AI-assisted tools for editing, refinement, and
-              digital content support.
-            </p>
+          <div class="skill-card fade-up delay-300 text-white" style="transition-delay: 400ms;">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
+              </div>
+              <h3>Others</h3>
+            </div>
+            <ul class="skill-list font-mono">
+              <li>SEO</li>
+              <li>Accessibility</li>
+              <li>Web Performance</li>
+              <li>Japanese Localization</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="experience">
+    <!-- Works Section -->
+    <section id="works">
       <div class="container">
-        <div class="section-title">Experience</div>
-
-        <div class="experience-list">
-          <div class="experience-item">
-            <h3>Digital Content & Localization Operations</h3>
-
-            <div class="experience-meta">
-              Self-Employed | Tokyo, Japan | Present
+        <div class="section-header fade-up">
+          <h2 class="section-title font-display">Selected Works</h2>
+          <div class="title-line"></div>
+        </div>
+        <div class="works-list">
+          <div class="work-card fade-up delay-100">
+            <div class="work-info">
+              <div class="work-role font-mono">Frontend Engineer</div>
+              <h3 class="work-title font-display">SaaSプロダクト ダッシュボードUI開発</h3>
+              <p class="work-desc">BtoB SaaSのダッシュボード画面のフロントエンド開発を担当。複雑な状態管理を要するデータグリッドやチャート描画において、パフォーマンス最適化とアクセシビリティ担保を実施しました。</p>
+              <div class="work-tech font-mono">
+                <span class="tech-tag">React</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Tailwind CSS</span><span class="tech-tag">Recharts</span>
+              </div>
             </div>
-
-            <p>
-              Managing independent digital publishing and web content projects,
-              including website development, platform operations, SEO-oriented
-              content management, and online publishing workflows.
-            </p>
+            <div style="display:flex;align-items:start">
+              <a href="#" class="work-link">
+                <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+              </a>
+            </div>
           </div>
-
-          <div class="experience-item">
-            <h3>Web Platform Management</h3>
-
-            <div class="experience-meta">
-              WordPress / GitHub Pages / Digital Publishing
+          <div class="work-card fade-up delay-200">
+            <div class="work-info">
+              <div class="work-role font-mono">Lead Developer</div>
+              <h3 class="work-title font-display">コーポレートサイト ヘッドレスCMS化</h3>
+              <p class="work-desc">レガシーなCMSからモダンなヘッドレスアーキテクチャへのリプレイス。SSR/SSGを活用してLighthouseスコアを大幅に改善し、同時にSEO内部対策や構造化データの実装を行いました。</p>
+              <div class="work-tech font-mono">
+                <span class="tech-tag">Next.js</span><span class="tech-tag">MicroCMS</span><span class="tech-tag">Vercel</span>
+              </div>
             </div>
-
-            <p>
-              Building and maintaining web-based platforms using WordPress and
-              GitHub Pages, including content organization, publishing support,
-              and front-end customization.
-            </p>
+            <div style="display:flex;align-items:start">
+              <a href="#" class="work-link">
+                <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="work-card fade-up delay-300">
+            <div class="work-info">
+              <div class="work-role font-mono">Frontend Developer</div>
+              <h3 class="work-title font-display">ECサイト フロントエンドリニューアル</h3>
+              <p class="work-desc">ECプラットフォームのフロントエンド刷新プロジェクトに参画。コンポーネント指向でのUI設計、決済APIとの連携、およびローカライゼーション要件への対応を行いました。</p>
+              <div class="work-tech font-mono">
+                <span class="tech-tag">Vue.js</span><span class="tech-tag">Nuxt.js</span><span class="tech-tag">SCSS</span>
+              </div>
+            </div>
+            <div style="display:flex;align-items:start">
+              <a href="#" class="work-link">
+                <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact">
-      <div class="container">
-        <div class="section-title">Contact</div>
-
-        <div class="contact-box">
-          <p>
-            Available for freelance and remote opportunities related to
-            Japanese localization, content review, digital publishing, and web
-            content operations.
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="contact-bg-glow"></div>
+      <div class="container relative z-10">
+        <div class="fade-up">
+          <div class="contact-icon-wrap">
+            <svg class="svg-xl" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <h2 class="contact-title font-display">Let's work together.</h2>
+          <p class="contact-desc">
+            新しいウェブプロジェクトの開発、フロントエンドの実装に関するご相談など、お気軽にお声がけください。現在、新規のフリーランス案件を受け付けております。
           </p>
-
-          <p>Email: your-email@example.com</p>
-
-          <p>LinkedIn: linkedin.com/in/your-profile</p>
+          <a href="mailto:daisuke.a@example.com" class="btn btn-primary" style="font-size: 1.125rem;">
+            メールで問い合わせる
+            <svg class="svg-lg" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <div class="social-links">
+            <a href="https://github.com/your-profile" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg class="svg-lg" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+            <a href="https://linkedin.com/in/your-profile" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg class="svg-lg" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      © 2026 Daisuke A. All rights reserved
+    <div class="container footer-inner font-mono">
+      <p>&copy; <span id="year"></span> Daisuke A. All rights reserved.</p>
+      <p>Designed & Built for Web.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ----------------------------
+    // Year Auto-update
+    // ----------------------------
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ----------------------------
+    // Scroll Intersection Observer
+    // ----------------------------
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // ----------------------------
+    // Particles System
+    // ----------------------------
+    const canvas = document.getElementById('particles-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      let width = 0;
+      let height = 0;
+      let mouse = { x: -1000, y: -1000 };
+      let animationFrameId;
+
+      const handleMouseMove = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      };
+      const handleMouseLeave = () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+      };
+
+      window.addEventListener('mousemove', handleMouseMove);
+      canvas.parentElement.addEventListener('mouseleave', handleMouseLeave);
+
+      const initParticles = () => {
+        particles = [];
+        const numParticles = Math.min(Math.floor((width * height) / 10000), 120);
+        for (let i = 0; i < numParticles; i++) {
+          particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.6,
+            vy: (Math.random() - 0.5) * 0.6,
+            radius: Math.random() * 1.5 + 0.5,
+            alpha: Math.random() * 0.4 + 0.1,
+          });
+        }
+      };
+
+      const resize = () => {
+        const parent = canvas.parentElement;
+        if (parent) {
+          width = parent.offsetWidth;
+          height = parent.offsetHeight;
+          canvas.width = width;
+          canvas.height = height;
+          initParticles();
+        }
+      };
+
+      window.addEventListener('resize', resize);
+      resize();
+
+      const draw = () => {
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < particles.length; i++) {
+          let p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fill();
+
+          const dxMouse = mouse.x - p.x;
+          const dyMouse = mouse.y - p.y;
+          const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+
+          if (distMouse < 180) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(59, 130, 246, ${0.4 * (1 - distMouse / 180)})`;
+            ctx.lineWidth = 1;
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.stroke();
+          }
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(200, 220, 255, ${0.1 * (1 - dist / 120)})`;
+              ctx.lineWidth = 0.5;
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          }
+        }
+        animationFrameId = requestAnimationFrame(draw);
+      };
+      
+      draw();
+    }
+  </script>
+</body>
+</html>
