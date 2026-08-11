@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daisuke A. Portfolio</title>
-  
+  <title>Daisuke A. | Japanese Localization &amp; Web Content Operations</title>
+  <meta name="description" content="Portfolio of Daisuke A., a Tokyo-based Japanese localization specialist working across content review, web publishing, SEO, front-end implementation, and publishing QA.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://dalocalizationjp-glitch.github.io/home/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Daisuke A. | Japanese Localization &amp; Web Content Operations">
+  <meta property="og:description" content="Japanese localization, content review, web publishing, SEO, and publishing QA for international digital projects.">
+  <meta property="og:url" content="https://dalocalizationjp-glitch.github.io/home/">
+  <meta property="og:image" content="https://dalocalizationjp-glitch.github.io/home/project_nanashino.webp">
+  <meta property="og:image:alt" content="Featured website project developed and managed by Daisuke A.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Daisuke A. | Japanese Localization &amp; Web Content Operations">
+  <meta name="twitter:description" content="Japanese localization, content review, web publishing, SEO, and publishing QA.">
+  <meta name="twitter:image" content="https://dalocalizationjp-glitch.github.io/home/project_nanashino.webp">
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -34,7 +49,16 @@
     .font-mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
 
     a { text-decoration: none; color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid rgba(96, 165, 250, 0.8); outline-offset: 4px; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .skip-link {
+      position: fixed; top: 1rem; left: 1rem; z-index: 100;
+      transform: translateY(-160%); padding: 0.75rem 1rem;
+      border-radius: 0.5rem; background: var(--text-main); color: var(--bg-color);
+      font-weight: 600; transition: transform 0.2s;
+    }
+    .skip-link:focus { transform: translateY(0); }
 
     /* Header */
     header {
@@ -46,29 +70,37 @@
     .header-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
     .logo { font-size: 1.25rem; font-weight: bold; letter-spacing: -0.02em; }
     .logo span { color: var(--accent); }
-    nav { display: none; gap: 2rem; }
-    @media (min-width: 768px) { nav { display: flex; } }
-    nav a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
-    nav a:hover { color: var(--text-main); }
+    .primary-nav { display: none; gap: 2rem; }
+    @media (min-width: 768px) { .primary-nav { display: flex; } }
+    .primary-nav a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
+    .primary-nav a:hover { color: var(--text-main); }
 
     /* Hero */
-    .hero { min-height: 90vh; display: flex; align-items: center; padding: 6rem 0; position: relative; }
+    .hero { min-height: 94vh; display: flex; align-items: center; padding: 8rem 0 6rem; position: relative; }
     .hero-bg-glow {
       position: absolute; top: -10rem; right: -5rem; width: 600px; height: 600px;
       background: rgba(59, 130, 246, 0.1); filter: blur(120px); border-radius: 50%;
       pointer-events: none; mix-blend-mode: screen; z-index: 1;
     }
-    .hero-content { position: relative; z-index: 10; max-width: 56rem; }
+    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+    @media (min-width: 960px) { .hero-grid { grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr); gap: 5rem; } }
+    .hero-content { position: relative; z-index: 10; }
     .hero-role { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 1.5rem; }
-    .hero-title { font-size: 2.5rem; font-weight: bold; line-height: 1.2; margin-bottom: 2rem; letter-spacing: -0.02em; }
-    @media (min-width: 768px) { .hero-title { font-size: 4rem; } }
+    .hero-title { font-size: 2.5rem; font-weight: bold; line-height: 1.08; margin-bottom: 2rem; letter-spacing: -0.035em; }
+    @media (min-width: 768px) { .hero-title { font-size: 4.25rem; } }
     .hero-desc { font-size: 1.125rem; color: var(--text-muted); max-width: 42rem; margin-bottom: 3rem; }
+    .hero-proof { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; margin: -1.5rem 0 2.5rem; color: var(--text-darker); font-size: 0.875rem; }
+    .hero-proof span { display: inline-flex; align-items: center; gap: 0.5rem; }
+    .hero-proof span::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #60a5fa; }
     .btn-group { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; }
     .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 9999px; font-weight: 500; transition: all 0.2s; }
     .btn-primary { background-color: var(--text-main); color: var(--bg-color); }
     .btn-primary:hover { background-color: #d4d4d8; }
     .btn-outline { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
     .btn-outline:hover { background-color: var(--card-bg); }
+    .hero-image-wrapper { position: relative; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 1.75rem; background: rgba(24, 24, 27, 0.58); box-shadow: 0 30px 90px rgba(0, 0, 0, 0.32); }
+    .hero-image { width: 100%; height: auto; display: block; border-radius: 1.25rem; object-fit: cover; }
+    .hero-image-label { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 0.5rem 0.25rem; color: var(--text-darker); font-size: 0.75rem; }
 
     /* Particles */
     #particles-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.8; }
@@ -84,6 +116,11 @@
     @media (min-width: 768px) { .about-layout { flex-direction: row; gap: 6rem; } .about-left { width: 33.333%; } .about-right { width: 66.666%; } }
     .about-name { font-size: 1.5rem; font-weight: 500; margin-bottom: 1.5rem; }
     .about-text { color: var(--text-muted); font-size: 1.125rem; margin-bottom: 1.5rem; }
+    .about-points { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2.25rem; }
+    @media (min-width: 680px) { .about-points { grid-template-columns: repeat(3, 1fr); } }
+    .about-point { padding: 1.25rem; border: 1px solid var(--border-color); border-radius: 1rem; background: rgba(24, 24, 27, 0.45); }
+    .about-point strong { display: block; margin-bottom: 0.25rem; color: var(--text-main); }
+    .about-point span { color: var(--text-darker); font-size: 0.85rem; }
 
     /* Skills */
     .skills-section { background-color: rgba(24, 24, 27, 0.5); }
@@ -100,16 +137,27 @@
 
     /* Works */
     .works-list { display: flex; flex-direction: column; gap: 3rem; }
-    .work-card { background-color: rgba(24, 24, 27, 0.5); border: 1px solid var(--border-color); padding: 2rem; border-radius: 1.5rem; display: flex; flex-direction: column; gap: 2rem; transition: background-color 0.2s; }
-    @media (min-width: 768px) { .work-card { flex-direction: row; padding: 3rem; justify-content: space-between; } .work-info { width: 66.666%; } }
-    .work-card:hover { background-color: var(--card-bg); }
+    .work-card { background-color: rgba(24, 24, 27, 0.5); border: 1px solid var(--border-color); padding: 2rem; border-radius: 1.5rem; display: grid; grid-template-columns: 1fr; gap: 2.5rem; transition: background-color 0.2s, border-color 0.2s; }
+    @media (min-width: 900px) { .work-card { grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr); padding: 3rem; align-items: center; } }
+    .work-card:hover { background-color: var(--card-bg); border-color: #3f3f46; }
+    .work-card-secondary { grid-template-columns: 1fr; }
+    @media (min-width: 900px) { .work-card-secondary { grid-template-columns: minmax(0, 1fr) 320px; } }
     .work-role { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-darker); margin-bottom: 0.75rem; }
     .work-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; }
-    .work-desc { color: var(--text-muted); margin-bottom: 2rem; }
+    .work-desc { color: var(--text-muted); margin-bottom: 1.5rem; }
+    .work-points { list-style: none; display: grid; gap: 0.75rem; margin: 0 0 2rem; }
+    .work-points li { color: var(--text-muted); padding-left: 1.25rem; position: relative; }
+    .work-points li::before { content: ''; position: absolute; left: 0; top: 0.68rem; width: 6px; height: 6px; border-radius: 50%; background: #60a5fa; }
     .work-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .tech-tag { background-color: var(--border-color); color: var(--text-muted); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; }
-    .work-link { width: 48px; height: 48px; border-radius: 50%; background-color: var(--border-color); display: flex; align-items: center; justify-content: center; color: var(--text-muted); transition: all 0.2s; flex-shrink: 0; }
-    .work-link:hover { color: var(--text-main); background-color: #3f3f46; }
+    .work-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+    .work-action { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; border-radius: 9999px; border: 1px solid var(--border-color); color: var(--text-main); font-size: 0.875rem; font-weight: 500; transition: background-color 0.2s, border-color 0.2s; }
+    .work-action:hover { background: var(--border-color); border-color: #3f3f46; }
+    .work-media { overflow: hidden; border-radius: 1rem; border: 1px solid var(--border-color); background: #111113; }
+    .work-media img { width: 100%; height: auto; display: block; transition: transform 0.35s ease; }
+    .work-media:hover img { transform: scale(1.02); }
+    .video-frame { position: relative; width: 100%; max-width: 320px; margin: 0 auto; aspect-ratio: 9 / 16; overflow: hidden; border-radius: 1rem; border: 1px solid var(--border-color); }
+    .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
     /* Contact */
     .contact-section { padding: 8rem 0; text-align: center; background-color: #09090b; overflow: hidden; }
@@ -118,7 +166,7 @@
     .contact-title { font-size: 2.25rem; font-weight: bold; margin-bottom: 1.5rem; }
     @media (min-width: 768px) { .contact-title { font-size: 3rem; } }
     .contact-desc { color: var(--text-muted); font-size: 1.125rem; max-width: 42rem; margin: 0 auto 3rem auto; }
-    .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 4rem; }
+    .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 3rem; }
     .social-link { color: var(--text-darker); padding: 0.5rem; transition: color 0.2s; }
     .social-link:hover { color: var(--text-main); }
 
@@ -134,278 +182,332 @@
     .delay-100 { transition-delay: 100ms; }
     .delay-200 { transition-delay: 200ms; }
     .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+    .btn-group-center { justify-content: center; }
+    .btn-contact { font-size: 1.05rem; }
 
     /* SVGs */
     svg { width: 1.25rem; height: 1.25rem; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
     .svg-lg { width: 1.5rem; height: 1.5rem; }
     .svg-xl { width: 2rem; height: 2rem; display: block; }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Daisuke A.",
+    "url": "https://dalocalizationjp-glitch.github.io/home/",
+    "jobTitle": "Japanese Localization Specialist",
+    "description": "Tokyo-based specialist in Japanese localization, content review, web publishing, SEO, front-end implementation, and publishing QA.",
+    "sameAs": [
+      "https://www.linkedin.com/in/japanese-localization-da/",
+      "https://github.com/dalocalizationjp-glitch"
+    ],
+    "knowsAbout": [
+      "Japanese localization",
+      "English to Japanese translation support",
+      "Japanese proofreading",
+      "Content review",
+      "Web content operations",
+      "Search engine optimization",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Publishing quality assurance"
+    ]
+  }
+  </script>
 </head>
-<body>
+<body id="top">
 
-<header>
-  <div class="container header-inner">
-    <a href="#" class="logo font-display">Daisuke A<span>.</span></a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#works">Works</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<main>
-  <section class="hero">
-    <canvas id="particles-canvas"></canvas>
-    <div class="hero-bg-glow"></div>
+  <header>
+    <div class="container header-inner">
+      <a href="#top" class="logo font-display" aria-label="Daisuke A. home">Daisuke A<span>.</span></a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#works">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <div class="container relative z-10">
-      <div class="hero-grid">
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <canvas id="particles-canvas"></canvas>
+      <div class="hero-bg-glow"></div>
 
-        <!-- Left Content -->
-        <div class="hero-content fade-up visible">
-          <div class="hero-role font-mono">Freelance Web Developer</div>
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content fade-up visible">
+            <div class="hero-role font-mono">Japanese Localization · Web Content Operations</div>
 
-          <h1 class="hero-title font-display">
-            ユーザー体験を最大化する<br>
-            モダンWebフロントエンドの実装
-          </h1>
+            <h1 id="hero-title" class="hero-title font-display">
+              Japanese content quality,<br>
+              web publishing, and SEO—managed end to end.
+            </h1>
 
-          <p class="hero-desc">
-            パフォーマンスとユーザビリティにフォーカスしたWebアプリケーション開発を行っています。<br>
-            デジタルコンテンツ運用やローカライゼーションの経験を活かし、単なる機能実装にとどまらない、ビジネスの目的に沿ったユーザー中心のプロダクト設計を得意としています。
-          </p>
+            <p class="hero-desc">
+              I help international teams adapt, review, publish, and maintain Japanese-facing digital content. My work combines English-to-Japanese localization, content QA, front-end implementation, SEO structure, and ongoing website operations.
+            </p>
 
-          <div class="btn-group">
-            <a href="#contact" class="btn btn-primary">
-              お問い合わせ
-              <svg viewBox="0 0 24 24">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </a>
+            <div class="hero-proof font-mono" role="group" aria-label="Professional highlights">
+              <span>Tokyo, Japan</span>
+              <span>250+ page website</span>
+              <span>Freelance &amp; project-based</span>
+            </div>
 
-            <a href="#works" class="btn btn-outline">
-              プロジェクトを見る
-            </a>
+            <div class="btn-group">
+              <a href="#works" class="btn btn-primary">
+                View Featured Project
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+              <a href="#contact" class="btn btn-outline">Discuss a Project</a>
+            </div>
+          </div>
+
+          <div class="hero-visual fade-up delay-200">
+            <div class="hero-image-wrapper">
+              <img
+                src="digitalworkflow.webp"
+                alt="Digital content workflow covering localization, web publishing, SEO, and quality assurance"
+                class="hero-image"
+                width="900"
+                height="600"
+              >
+              <div class="hero-image-label font-mono">
+                <span>Localization</span>
+                <span>Web · SEO · QA</span>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
 
-       <!-- Right Visual -->
-<div class="hero-visual fade-up delay-200">
-  <div class="hero-image-wrapper">
-    <img
-      src="digitalworkflow.webp"
-      alt="AI-assisted digital workflow and content operations"
-      class="hero-image"
-      style="
-        width: 100%;
-        max-width: 900px;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-        border-radius: 24px;
-        object-fit: cover;
-      "
-    >
-  </div>
-</div>
+    <section id="about">
+      <div class="container">
+        <div class="about-layout">
+          <div class="about-left fade-up delay-100">
+            <h2 class="section-title font-display">About</h2>
+            <div class="title-line"></div>
+          </div>
 
-</div>
-</div>
-</section>
+          <div class="about-right fade-up delay-200">
+            <h3 class="about-name">Daisuke A.</h3>
 
-  <!-- About Section -->
-  <section id="about">
-    <div class="container">
-      <div class="about-layout">
-        <div class="about-left fade-up delay-100">
-          <h2 class="section-title font-display">About</h2>
-          <div class="title-line"></div>
-        </div>
+            <p class="about-text">
+              I am a Tokyo-based Japanese localization and digital content specialist. I support English-to-Japanese localization, Japanese proofreading, content review, website publishing, and quality assurance for international digital projects.
+            </p>
 
-        <div class="about-right fade-up delay-200">
-          <h3 class="about-name">Daisuke A.</h3>
+            <p class="about-text">
+              In parallel, I independently planned, developed, and currently manage an international music and licensing website with more than 250 English-language pages. The project gives me hands-on experience across information architecture, HTML, CSS, JavaScript, GitHub Pages, SEO, internal linking, source verification, and ongoing publishing operations.
+            </p>
 
-          <p class="about-text">
-            フリーランスのWebデベロッパーとして、フロントエンド領域を中心にモダンなWeb開発の現場に携わっています。
-          </p>
+            <p class="about-text">
+              I use AI-assisted research and editorial tools where they improve efficiency, while manually reviewing final content for accuracy, clarity, consistency, terminology, and natural language.
+            </p>
 
-          <p class="about-text">
-            これまでのコンテンツ運用やプロジェクトマネジメントのバックグラウンドを強みに、UI設計の意図を汲み取った的確なコンポーネント実装を得意とします。表示速度の改善、アクセシビリティへの配慮、SEOを見据えた内部構造の整理など、見えない部分の品質にもこだわり、長期的に運用しやすいコードベースを提供します。
-          </p>
+            <div class="about-points">
+              <div class="about-point">
+                <strong>250+ pages</strong>
+                <span>Planned, developed, and maintained</span>
+              </div>
+              <div class="about-point">
+                <strong>End-to-end</strong>
+                <span>From structure to publishing QA</span>
+              </div>
+              <div class="about-point">
+                <strong>EN → JP</strong>
+                <span>Localization, review, and proofreading</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="skills-section">
       <div class="container">
         <div class="section-header fade-up">
-          <h2 class="section-title font-display">Skills & Stack</h2>
+          <h2 class="section-title font-display">Skills &amp; Services</h2>
           <div class="title-line"></div>
         </div>
+
         <div class="skills-grid">
-          <div class="skill-card fade-up delay-100">
-            <div class="skill-header">
-              <div class="skill-icon-wrap">
-                <svg viewBox="0 0 24 24"><path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/></svg>
-              </div>
-              <h3>Frontend</h3>
+          <article class="skill-card fade-up delay-100">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
             </div>
+            <h3>Japanese Localization</h3>
             <ul class="skill-list font-mono">
-              <li>React</li>
-              <li>TypeScript</li>
-              <li>Next.js</li>
-              <li>Vue.js</li>
-              <li>HTML/CSS</li>
+              <li>EN → JP localization</li>
+              <li>Japanese proofreading</li>
+              <li>Content review</li>
+              <li>Terminology checks</li>
+              <li>Natural-language QA</li>
             </ul>
-          </div>
-          <div class="skill-card fade-up delay-200">
-            <div class="skill-header">
-              <div class="skill-icon-wrap">
-                <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-              </div>
-              <h3>Styling & UI</h3>
+          </article>
+
+          <article class="skill-card fade-up delay-200">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/></svg>
             </div>
+            <h3>Website Development</h3>
             <ul class="skill-list font-mono">
-              <li>Tailwind CSS</li>
-              <li>CSS-in-JS</li>
-              <li>Framer Motion</li>
-              <li>shadcn/ui</li>
+              <li>HTML5 &amp; CSS3</li>
+              <li>JavaScript</li>
+              <li>Responsive layouts</li>
+              <li>Git &amp; GitHub</li>
+              <li>GitHub Pages</li>
             </ul>
-          </div>
-          <div class="skill-card fade-up delay-300">
-            <div class="skill-header">
-              <div class="skill-icon-wrap">
-                <svg viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
-              </div>
-              <h3>Backend & Tools</h3>
+          </article>
+
+          <article class="skill-card fade-up delay-300">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             </div>
+            <h3>SEO &amp; Publishing</h3>
             <ul class="skill-list font-mono">
-              <li>Node.js</li>
-              <li>Vite</li>
-              <li>Git</li>
-              <li>REST API</li>
-              <li>GraphQL</li>
+              <li>Information architecture</li>
+              <li>On-page SEO</li>
+              <li>Metadata &amp; internal links</li>
+              <li>Sitemaps</li>
+              <li>Google Search Console</li>
             </ul>
-          </div>
-          <div class="skill-card fade-up delay-300 text-white" style="transition-delay: 400ms;">
-            <div class="skill-header">
-              <div class="skill-icon-wrap">
-                <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
-              </div>
-              <h3>Others</h3>
+          </article>
+
+          <article class="skill-card fade-up delay-400">
+            <div class="skill-icon-wrap">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
             </div>
+            <h3>Content Operations &amp; QA</h3>
             <ul class="skill-list font-mono">
-              <li>SEO</li>
-              <li>Accessibility</li>
-              <li>Web Performance</li>
-              <li>Japanese Localization</li>
+              <li>Source verification</li>
+              <li>Link testing</li>
+              <li>Content consistency</li>
+              <li>Image optimization</li>
+              <li>Final publishing QA</li>
             </ul>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Works Section -->
     <section id="works">
       <div class="container">
         <div class="section-header fade-up">
-          <h2 class="section-title font-display">Selected Works</h2>
+          <h2 class="section-title font-display">Selected Work</h2>
           <div class="title-line"></div>
         </div>
+
         <div class="works-list">
-
-  <!-- YouTube Shorts Embed -->
-  <div class="work-card fade-up delay-100">
-    <div class="work-info">
-      <div class="work-role font-mono">AI-assisted Workflow Demo</div>
-
-      <h3 class="work-title font-display">
-        YouTube Shorts Demonstration
-      </h3>
-
-      <p class="work-desc">
-        Short-form demonstration showcasing AI-assisted content workflows,
-        digital publishing operations, and modern web-based content production.
-      </p>
-
-      <div style="
-        position: relative;
-        padding-bottom: 177.77%;
-        height: 0;
-        overflow: hidden;
-        border-radius: 24px;
-        margin-top: 24px;
-      ">
-        <iframe
-          src="https://www.youtube.com/embed/KFjXUMe1BT8"
-          title="YouTube Shorts Demo"
-          frameborder="0"
-          allowfullscreen
-          style="
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 24px;
-          ">
-        </iframe>
-      </div>
-
-      <div class="work-tech font-mono" style="margin-top:24px;">
-        <span class="tech-tag">YouTube Shorts</span>
-        <span class="tech-tag">AI Workflow</span>
-        <span class="tech-tag">Content Operations</span>
-        <span class="tech-tag">Video Editing</span>
-      </div>
-    </div>
-  </div>
-          <div class="work-card fade-up delay-300">
+          <article class="work-card fade-up delay-100">
             <div class="work-info">
-              <div class="work-role font-mono">Frontend Developer</div>
-              <h3 class="work-title font-display">ECサイト フロントエンドリニューアル</h3>
-              <p class="work-desc">ECプラットフォームのフロントエンド刷新プロジェクトに参画。コンポーネント指向でのUI設計、決済APIとの連携、およびローカライゼーション要件への対応を行いました。</p>
+              <div class="work-role font-mono">Independent Website Development &amp; Content Operations</div>
+              <h3 class="work-title font-display">Nanashino-chan — International Music &amp; Licensing Website</h3>
+              <p class="work-desc">
+                Independently planned, developed, and currently manage an international website with more than 250 English-language pages, supporting music discovery, licensing information, educational content, portfolio presentation, and B2B communications.
+              </p>
+
+              <ul class="work-points">
+                <li>Planned the information architecture and topic-based SEO structure across 250+ pages.</li>
+                <li>Built and maintained the site using HTML, CSS, JavaScript, GitHub, and GitHub Pages.</li>
+                <li>Managed metadata, internal linking, sitemaps, image optimization, and Search Console monitoring.</li>
+                <li>Conducted source verification, terminology review, link testing, consistency checks, and publishing QA.</li>
+              </ul>
+
               <div class="work-tech font-mono">
-                <span class="tech-tag">Vue.js</span><span class="tech-tag">Nuxt.js</span><span class="tech-tag">SCSS</span>
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">CSS</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">GitHub Pages</span>
+                <span class="tech-tag">SEO</span>
+                <span class="tech-tag">Content Operations</span>
+                <span class="tech-tag">Publishing QA</span>
+              </div>
+
+              <div class="work-actions">
+                <a class="work-action" href="https://nanashino-chan.github.io/site/" target="_blank" rel="noopener noreferrer">
+                  View Live Website
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                </a>
               </div>
             </div>
-            <div style="display:flex;align-items:start">
-              <a href="#" class="work-link">
-                <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-              </a>
+
+            <a class="work-media" href="https://nanashino-chan.github.io/site/" target="_blank" rel="noopener noreferrer" aria-label="Open the Nanashino-chan website">
+              <img
+                src="project_nanashino.webp"
+                alt="Nanashino-chan international music and licensing website homepage"
+                width="955"
+                height="477"
+                loading="lazy"
+              >
+            </a>
+          </article>
+
+          <article class="work-card work-card-secondary fade-up delay-200">
+            <div class="work-info">
+              <div class="work-role font-mono">AI-assisted Content Workflow</div>
+              <h3 class="work-title font-display">Digital Publishing Workflow Demonstration</h3>
+              <p class="work-desc">
+                A short visual example of an AI-assisted production workflow used to support digital content creation and publishing. AI tools support selected research and editorial steps; all final content is manually reviewed before publication.
+              </p>
+
+              <div class="work-tech font-mono">
+                <span class="tech-tag">Content Operations</span>
+                <span class="tech-tag">AI-assisted Editing</span>
+                <span class="tech-tag">Manual QA</span>
+                <span class="tech-tag">Digital Publishing</span>
+              </div>
             </div>
-          </div>
+
+            <div class="video-frame">
+              <iframe
+                src="https://www.youtube.com/embed/KFjXUMe1BT8"
+                title="AI-assisted digital content workflow demonstration"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact-section">
       <div class="contact-bg-glow"></div>
-      <div class="container relative z-10">
+      <div class="container">
         <div class="fade-up">
           <div class="contact-icon-wrap">
-            <svg class="svg-xl" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <svg class="svg-xl" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           </div>
           <h2 class="contact-title font-display">Let's work together.</h2>
           <p class="contact-desc">
-            新しいウェブプロジェクトの開発、フロントエンドの実装に関するご相談など、お気軽にお声がけください。現在、新規のフリーランス案件を受け付けております。
+            Available for freelance and project-based work in Japanese localization, proofreading, content review, website content operations, publishing QA, and SEO support.
           </p>
-          <a href="mailto:da.localization.jp@gmail.com" class="btn btn-primary" style="font-size: 1.125rem;">
-            メールで問い合わせる
-            <svg class="svg-lg" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <div class="social-links">
-            <a href="https://github.com/dalocalizationjp-glitch" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <svg class="svg-lg" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4M9 18c-4.51 2-5-2-7-2"/></svg>
+
+          <div class="btn-group btn-group-center">
+            <a href="mailto:da.localization.jp@gmail.com" class="btn btn-primary btn-contact">
+              Email Daisuke A.
+              <svg class="svg-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="https://www.linkedin.com/in/japanese-localization-da/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <svg class="svg-lg" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>
+            <a href="https://www.linkedin.com/in/japanese-localization-da/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
+          </div>
+
+          <div class="social-links">
+            <a href="https://github.com/dalocalizationjp-glitch" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+              <svg class="svg-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4M9 18c-4.51 2-5-2-7-2"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/japanese-localization-da/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+              <svg class="svg-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>
             </a>
           </div>
         </div>
@@ -416,7 +518,7 @@
   <footer>
     <div class="container footer-inner font-mono">
       <p>&copy; <span id="year"></span> Daisuke A. All rights reserved.</p>
-      <p>Designed & Built for Web.</p>
+      <p>Japanese localization · Content QA · Web publishing · SEO</p>
     </div>
   </footer>
 
